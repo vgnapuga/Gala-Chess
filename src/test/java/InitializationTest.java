@@ -1,9 +1,7 @@
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.vsu.cs.cg.oop.galaChess.Engine.GameBoard;
-import ru.vsu.cs.cg.oop.galaChess.figures.Figure;
-import ru.vsu.cs.cg.oop.galaChess.figures.FigureColor;
-import ru.vsu.cs.cg.oop.galaChess.figures.FigureType;
+
+import ru.vsu.cs.cg.oop.galaChess.engine.GameBoard;
+import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
