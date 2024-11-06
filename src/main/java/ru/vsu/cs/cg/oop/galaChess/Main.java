@@ -1,4 +1,4 @@
-package ru.vsu.cs.cg.oop;
+package ru.vsu.cs.cg.oop.galaChess;
 
 public class Main {
 
