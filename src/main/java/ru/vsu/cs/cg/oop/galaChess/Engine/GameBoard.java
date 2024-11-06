@@ -1,4 +1,4 @@
-package ru.vsu.cs.cg.oop.galaChess;
+package ru.vsu.cs.cg.oop.galaChess.Engine;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.Figure;
 import ru.vsu.cs.cg.oop.galaChess.figures.FigureColor;
