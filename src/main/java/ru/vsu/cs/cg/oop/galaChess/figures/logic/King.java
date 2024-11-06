@@ -13,14 +13,16 @@ public class King extends Figure implements Movable {
         int x0 = this.getX();
         int y0 = this.getY();
 
-        Figure start = board[x0][y0];
         Figure end = board[x1][y1];
 
-        if (!isValidMove(start, end, x0, y0, x1, y1)) {
+        if (!isValidMove(this, end, x0, y0, x1, y1)) {
             throw new IllegalArgumentException("Invalid move");
         } else {
-            board[x1][y1] = start;
+            board[x1][y1] = this;
             board[x0][y0] = null;
+
+            this.setX(x1);
+            this.setY(y1);
         }
     }
 
@@ -34,7 +36,7 @@ public class King extends Figure implements Movable {
         int dx = Math.abs(x1 - x0);
         int dy = Math.abs(y1 - y0);
 
-        if (dx <= 1 || dy <= 1)
+        if (dx <= 1 && dy <= 1)
             return end == null || !start.isSameColor(end);
 
         return false;

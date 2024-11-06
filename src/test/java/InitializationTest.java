@@ -11,7 +11,7 @@ public class InitializationTest {
     Figure[][] figures = gameBoard.getBoard();
 
     @Test
-    public void testWhiteCount() {
+    void testWhiteCount() {
         int result = count(FigureColor.WHITE);
         int expected = 20;
 
@@ -19,7 +19,7 @@ public class InitializationTest {
     }
 
     @Test
-    public void testBlackCount() {
+    void testBlackCount() {
         int result = count(FigureColor.BLACK);
         int expected = 20;
 
@@ -27,7 +27,7 @@ public class InitializationTest {
     }
 
     @Test
-    public void testEmptyCellsCount() {
+    void testEmptyCellsCount() {
         int result = 0;
         int expected = 60;
 
@@ -43,21 +43,21 @@ public class InitializationTest {
 
     // KINGS
     @Test
-    public void testKingsCount() {
+    void testKingsCount() {
         int result = count(FigureType.KING);
         int expected = 4;
 
         assertEquals(result, expected);
     }
     @Test
-    public void testWhiteKingsCount() {
+    void testWhiteKingsCount() {
         int result = count(FigureType.KING, FigureColor.WHITE);
         int expected = 2;
 
         assertEquals(result, expected);
     }
     @Test
-    public void testBlackKingsCount() {
+    void testBlackKingsCount() {
         int result = count(FigureType.KING, FigureColor.BLACK);
         int expected = 2;
 
@@ -66,21 +66,21 @@ public class InitializationTest {
 
     // ROOKS
     @Test
-    public void testRooksCount() {
+    void testRooksCount() {
         int result = count(FigureType.ROOK);
         int expected = 10;
 
         assertEquals(result, expected);
     }
     @Test
-    public void testWhiteRooksCount() {
+    void testWhiteRooksCount() {
         int result = count(FigureType.ROOK, FigureColor.WHITE);
         int expected = 5;
 
         assertEquals(result, expected);
     }
     @Test
-    public void testBlackRooksCount() {
+    void testBlackRooksCount() {
         int result = count(FigureType.ROOK, FigureColor.BLACK);
         int expected = 5;
 
@@ -89,21 +89,21 @@ public class InitializationTest {
 
     // BISHOPS
     @Test
-    public void testBishopsCount() {
+    void testBishopsCount() {
         int result = count(FigureType.BISHOP);
         int expected = 10;
 
         assertEquals(result, expected);
     }
     @Test
-    public void testWhiteBishopsCount() {
+    void testWhiteBishopsCount() {
         int result = count(FigureType.BISHOP, FigureColor.WHITE);
         int expected = 5;
 
         assertEquals(result, expected);
     }
     @Test
-    public void testBlackBishopsCount() {
+    void testBlackBishopsCount() {
         int result = count(FigureType.BISHOP, FigureColor.BLACK);
         int expected = 5;
 
@@ -112,21 +112,21 @@ public class InitializationTest {
 
     // PAWNS
     @Test
-    public void testPawnsCount() {
+    void testPawnsCount() {
         int result = count(FigureType.PAWN);
         int expected = 16;
 
         assertEquals(result, expected);
     }
     @Test
-    public void testWhitePawnsCount() {
+    void testWhitePawnsCount() {
         int result = count(FigureType.PAWN, FigureColor.WHITE);
         int expected = 8;
 
         assertEquals(result, expected);
     }
     @Test
-    public void testBlackPawnsCount() {
+    void testBlackPawnsCount() {
         int result = count(FigureType.PAWN, FigureColor.BLACK);
         int expected = 8;
 
