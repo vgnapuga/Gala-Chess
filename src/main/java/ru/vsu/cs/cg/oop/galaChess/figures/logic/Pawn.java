@@ -1,15 +1,18 @@
-package ru.vsu.cs.cg.oop.galaChess.figures.moveLogic;
+package ru.vsu.cs.cg.oop.galaChess.figures.logic;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
-public class Bishop extends Figure implements Movable {
+public class Pawn extends Figure implements Movable {
 
-    public Bishop(final FigureColor color) {
-        super(FigureType.BISHOP, color);
+    public Pawn(final FigureColor color, int x, int y) {
+        super(FigureType.PAWN, color, x, y);
     }
 
     @Override
-    public void move(Figure[][] board, int x0, int y0, int x1, int y1) {
+    public void move(Figure[][] board, int x1, int y1) {
+        int x0 = this.getX();
+        int y0 = this.getY();
+
         Figure start = board[x0][y0];
         Figure end = board[x1][y1];
 
@@ -22,11 +25,10 @@ public class Bishop extends Figure implements Movable {
     }
 
     private boolean isValidMove(Figure start, Figure end, int x0, int y0, int x1, int y1) {
-        if ((x0 == x1 && y0 == y1) || start == null || end.getColor() == start.getColor()) {
+        if ((x0 == x1 && y0 == y1) || start == null)
             return false;
-        }
 
-        return true;
+        return false;
     }
 
 }

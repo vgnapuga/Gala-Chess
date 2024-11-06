@@ -1,15 +1,18 @@
-package ru.vsu.cs.cg.oop.galaChess.figures.moveLogic;
+package ru.vsu.cs.cg.oop.galaChess.figures.logic;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
 public class King extends Figure implements Movable {
 
-    public King(final FigureColor color) {
-        super(FigureType.KING, color);
+    public King(final FigureColor color, int x, int y) {
+        super(FigureType.KING, color, x, y);
     }
 
     @Override
-    public void move(Figure[][] board, int x0, int y0, int x1, int y1) {
+    public void move(Figure[][] board, int x1, int y1) {
+        int x0 = this.getX();
+        int y0 = this.getY();
+
         Figure start = board[x0][y0];
         Figure end = board[x1][y1];
 
@@ -25,14 +28,14 @@ public class King extends Figure implements Movable {
         if ((x0 == x1 && y0 == y1) || start == null)
             return false;
 
-        if (isInCentralSquare(x0, y0) && !isStartCoordinates(x1, y1) && !isSameColor(start, end))
+        if (isInCentralSquare(x0, y0) && !isStartCoordinates(x1, y1) && (end == null || !start.isSameColor(end)))
             return true;
 
         int dx = Math.abs(x1 - x0);
         int dy = Math.abs(y1 - y0);
 
         if (dx <= 1 || dy <= 1)
-            return end == null || !isSameColor(start, end);
+            return end == null || !start.isSameColor(end);
 
         return false;
     }
