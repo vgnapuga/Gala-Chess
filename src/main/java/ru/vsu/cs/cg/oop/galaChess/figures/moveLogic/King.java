@@ -21,7 +21,7 @@ public class King extends Figure implements Movable {
         }
     }
 
-    private boolean isValidMove(Figure start, Figure end, int x0, int y0, int x1, int y1) {
+    private static boolean isValidMove(Figure start, Figure end, int x0, int y0, int x1, int y1) {
         if ((x0 == x1 && y0 == y1) || start == null)
             return false;
 
@@ -41,19 +41,15 @@ public class King extends Figure implements Movable {
         return (x0 == 4 || x0 == 5) && (y0 == 4 || y0 == 5);
     }
 
-    private boolean isSameColor(Figure start, Figure end) {
-        return start.getColor() == end.getColor();
-    }
-
-    private boolean isStartCoordinates(int x, int y) {
+    private static boolean isStartCoordinates(int x, int y) {
         return isWhiteStart(x, y) || isBlackStart(x, y);
     }
-    private boolean isWhiteStart(int x, int y) {
+    private static boolean isWhiteStart(int x, int y) {
         return ((x < 4 || x > 5) && y == 9) ||
                 ((x < 3 || x > 6) && y == 8) ||
                 ((x < 2 || x > 7) && y == 7) ||
                 ((x == 0) || (x == 9) && y == 6);    }
-    private boolean isBlackStart(int x, int y) {
+    private static boolean isBlackStart(int x, int y) {
         return ((x < 4 || x > 5) && y == 0) ||
                 ((x < 3 || x > 6) && y == 1) ||
                 ((x < 2 || x > 7) && y == 2) ||

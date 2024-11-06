@@ -18,4 +18,8 @@ public class Figure {
         return color;
     }
 
+    protected static boolean isSameColor(Figure start, Figure end) {
+        return start.getColor() == end.getColor();
+    }
+
 }
