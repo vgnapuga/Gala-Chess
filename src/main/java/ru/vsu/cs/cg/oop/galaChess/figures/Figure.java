@@ -4,15 +4,16 @@ public class Figure {
 
     private final FigureType type;
     private final FigureColor color;
-
     private int x;
     private int y;
 
-    public Figure(final FigureType type, final FigureColor color, int x, int y) {
+    public Figure(final FigureType type, final FigureColor color, int x, int y, Figure[][] board) {
         this.type = type;
         this.color = color;
         this.x = x;
         this.y = y;
+
+        board[x][y] = this;
     }
 
     public final FigureType getType() {

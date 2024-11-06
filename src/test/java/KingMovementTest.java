@@ -15,8 +15,7 @@ public class KingMovementTest {
     @BeforeEach
     void setUp() {
         board = new Figure[10][10];
-        king0 = new King(FigureColor.WHITE, 3, 3);
-        board[3][3] = king0;
+        king0 = new King(FigureColor.WHITE, 3, 3, board);
     }
 
     @Test
@@ -35,8 +34,7 @@ public class KingMovementTest {
 
     @Test
     void testValidMoveToOccupiedByOpponentColorCell() {
-        King king1 = new King(FigureColor.BLACK, 4, 4);
-        board[4][4] = king1;
+        King king1 = new King(FigureColor.BLACK, 4, 4, board);
 
         king0.move(board, 4, 4);
 
@@ -45,8 +43,7 @@ public class KingMovementTest {
     }
     @Test
     void testInvalidMoveToOccupiedBySameColorCell() {
-        King king1 = new King(king0.getColor(), 4, 4);
-        board[4][4] = king1;
+        King king1 = new King(king0.getColor(), 4, 4, board);
 
         assertThrows(IllegalArgumentException.class, () -> king0.move(board, 4, 4));
         assertEquals(king1, board[4][4]);

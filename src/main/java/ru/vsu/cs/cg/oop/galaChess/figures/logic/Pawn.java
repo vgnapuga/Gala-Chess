@@ -4,8 +4,8 @@ import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
 public class Pawn extends Figure implements Movable {
 
-    public Pawn(final FigureColor color, int x, int y) {
-        super(FigureType.PAWN, color, x, y);
+    public Pawn(final FigureColor color, int x, int y, Figure[][] board) {
+        super(FigureType.PAWN, color, x, y, board);
     }
 
     @Override
@@ -21,6 +21,9 @@ public class Pawn extends Figure implements Movable {
         } else {
             board[x1][y1] = start;
             board[x0][y0] = null;
+
+            this.setX(x1);
+            this.setY(y1);
         }
     }
 

@@ -4,8 +4,8 @@ import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
 public class King extends Figure implements Movable {
 
-    public King(final FigureColor color, int x, int y) {
-        super(FigureType.KING, color, x, y);
+    public King(final FigureColor color, int x, int y, Figure[][] board) {
+        super(FigureType.KING, color, x, y, board);
     }
 
     @Override
