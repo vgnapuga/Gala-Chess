@@ -18,11 +18,8 @@ public class King extends Figure implements Movable {
         if (!isValidMove(this, end, x0, y0, x1, y1)) {
             throw new IllegalArgumentException("Invalid move");
         } else {
-            board[x1][y1] = this;
+            this.setPosition(board, x1, y1);
             board[x0][y0] = null;
-
-            this.setX(x1);
-            this.setY(y1);
         }
     }
 

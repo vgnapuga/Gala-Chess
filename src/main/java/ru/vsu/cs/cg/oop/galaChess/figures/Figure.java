@@ -24,26 +24,27 @@ public class Figure {
         return color;
     }
 
+    public final void setPosition(Figure[][] board, final int x, final int y) {
+        this.x = x;
+        this.y = y;
+
+        board[x][y] = this;
+    }
+
     public final int getX() {
         return x;
-    }
-    public final void setX(int x) {
-        this.x = x;
     }
 
     public final int getY() {
         return y;
-    }
-    public final void setY(int y) {
-        this.y = y;
     }
 
     public final boolean isSameColor(Figure figure) {
         return this.getColor() == figure.getColor();
     }
 
-    public static final boolean isInMiddle(int x, int y) {
-        return ((x == 4 || x == 5) || (y == 4 || y == 5));
+    public final boolean isInMiddle() {
+        return ((this.x == 4 || this.x == 5) || (this.y == 4 || this.y == 5));
     }
 
 }

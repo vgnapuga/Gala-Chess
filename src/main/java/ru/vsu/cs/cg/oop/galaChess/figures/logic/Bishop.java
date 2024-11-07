@@ -2,6 +2,8 @@ package ru.vsu.cs.cg.oop.galaChess.figures.logic;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
+import static ru.vsu.cs.cg.oop.galaChess.figures.logic.Rook.rookMove;
+
 public class Bishop extends Figure implements Movable {
 
     public Bishop(final FigureColor color, int x, int y, Figure[][] board) {
@@ -19,11 +21,8 @@ public class Bishop extends Figure implements Movable {
         if (!isValidMove(start, end, x0, y0, x1, y1)) {
             throw new IllegalArgumentException("Invalid move");
         } else {
-            board[x1][y1] = start;
+            this.setPosition(board, x1, y1);
             board[x0][y0] = null;
-
-            this.setX(x1);
-            this.setY(y1);
         }
     }
 
@@ -31,6 +30,13 @@ public class Bishop extends Figure implements Movable {
         if ((x0 == x1 && y0 == y1) || start == null)
             return false;
 
+        if (this.isInMiddle())
+            return rookMove();
+        else
+            return bishopMove();
+    }
+
+    protected static final boolean bishopMove() {
         return false;
     }
 
