@@ -1,6 +1,7 @@
 package ru.vsu.cs.cg.oop.galaChess.figures.logic;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
+import ru.vsu.cs.cg.oop.galaChess.engine.GameBoard;
 
 public class King extends Figure implements Movable {
 
@@ -15,7 +16,7 @@ public class King extends Figure implements Movable {
 
         Figure end = board[x1][y1];
 
-        if (!isValidMove(this, end, x0, y0, x1, y1)) {
+        if (!isValidMove(board, x0, y0, x1, y1)) {
             throw new IllegalArgumentException("Invalid move");
         } else {
             this.setPosition(board, x1, y1);
@@ -23,11 +24,15 @@ public class King extends Figure implements Movable {
         }
     }
 
-    private static boolean isValidMove(Figure start, Figure end, int x0, int y0, int x1, int y1) {
-        if ((x0 == x1 && y0 == y1) || start == null)
+    private boolean isValidMove(Figure[][] board, int x0, int y0, int x1, int y1) {
+        if (x0 >= board[0].length || x1 >= board[0].length || y0 >= board.length || y1 >= board.length)
             return false;
 
-        if (isInCentralSquare(x0, y0) && !isStartCoordinates(x1, y1) && (end == null || !start.isSameColor(end)))
+        Figure start = board[x0][y0];
+        Figure end = board[x1][y1];
+
+        if (isInCentralSquare(x0, y0) && !isStartCoordinates(x1, y1) &&
+                (end == null || !start.isSameColor(end)))
             return true;
 
         int dx = Math.abs(x1 - x0);
@@ -50,7 +55,8 @@ public class King extends Figure implements Movable {
         return ((x < 4 || x > 5) && y == 9) ||
                 ((x < 3 || x > 6) && y == 8) ||
                 ((x < 2 || x > 7) && y == 7) ||
-                ((x == 0) || (x == 9) && y == 6);    }
+                ((x == 0) || (x == 9) && y == 6);
+    }
     private static boolean isBlackStart(int x, int y) {
         return ((x < 4 || x > 5) && y == 0) ||
                 ((x < 3 || x > 6) && y == 1) ||

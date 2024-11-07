@@ -18,7 +18,7 @@ public class Bishop extends Figure implements Movable {
         Figure start = board[x0][y0];
         Figure end = board[x1][y1];
 
-        if (!isValidMove(start, end, x0, y0, x1, y1)) {
+        if (!isValidMove(board, x0, y0, x1, y1)) {
             throw new IllegalArgumentException("Invalid move");
         } else {
             this.setPosition(board, x1, y1);
@@ -26,12 +26,18 @@ public class Bishop extends Figure implements Movable {
         }
     }
 
-    private boolean isValidMove(Figure start, Figure end, int x0, int y0, int x1, int y1) {
+    private boolean isValidMove(Figure[][] board, int x0, int y0, int x1, int y1) {
+        if (x0 >= board[0].length || x1 >= board[0].length || y0 >= board.length || y1 >= board.length)
+            return false;
+
+        Figure start = board[x0][y0];
+        Figure end = board[x1][y1];
+
         if ((x0 == x1 && y0 == y1) || start == null)
             return false;
 
         if (this.isInMiddle())
-            return rookMove();
+            return rookMove(board, x0, y0, x1, y1);
         else
             return bishopMove();
     }
