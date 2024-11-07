@@ -11,7 +11,7 @@ public class Rook extends Figure implements Movable {
     }
 
     @Override
-    public void move(Figure[][] board, int x1, int y1) {
+    public void moveTo(Figure[][] board, int x1, int y1) {
         int x0 = this.getX();
         int y0 = this.getY();
 
@@ -24,76 +24,67 @@ public class Rook extends Figure implements Movable {
     }
 
     private boolean isValidMove(Figure[][] board, int x0, int y0, int x1, int y1) {
+        if (Movable.isOutOfBoard(x0) || Movable.isOutOfBoard(y0) ||
+                Movable.isOutOfBoard(x1) || Movable.isOutOfBoard(y1))
+            return false;
+
         Figure start = board[x0][y0];
         Figure end = board[x1][y1];
+
+        if (end != null && start.isSameColorWith(end))
+            return false;
 
         if ((x0 == x1 && y0 == y1) || start == null)
             return false;
 
         if (this.isInMiddle())
-            return bishopMove();
+            return bishopMove(board, x0, y0, x1, y1);
         else
             return rookMove(board, x0, y0, x1, y1);
     }
 
-    protected static boolean rookMove(Figure[][] board, int x0, int y0, int x1, int y1) {
-        if (x0 >= board[0].length || x1 >= board[0].length || y0 >= board.length || y1 >= board.length)
-            return false;
-
-        Figure start = board[x0][y0];
-        Figure end = board[x1][y1];
-
+    static boolean rookMove(Figure[][] board, int x0, int y0, int x1, int y1) {
         if (x0 != x1 && y0 != y1)
             return false;
-        else if (x0 != x1)
-            return horizontalMove(board, start, x0, y0, x1, y1);
+
+        if (x0 != x1)
+            return horizontalMove(board, x0, y0, x1);
         else if (y0 != y1)
-            return verticalMove(board, start, x0, y0, x1, y1);
+            return verticalMove(board, x0, y0, y1);
 
         return false;
     }
 
-    private static boolean horizontalMove(Figure[][] board, Figure start, int x0, int y0, int x1, int y1) {
+    private static boolean horizontalMove(Figure[][] board, int x0, int y0, int x1) {
         if (x0 > x1) {
-            for (int x = x0; x > x1; x--) {
-                if (board[x - 1][y0] != null ||
-                        (board[x1][y1] != null && start.isSameColor(board[x1][y1])))
+            for (int x = x0 - 1; x > x1; x--) {
+                if (board[x][y0] != null)
                     return false;
-                else
-                    return true;
             }
         } else if (x0 < x1) {
-            for (int x = x0; x < x1; x++) {
-                if (board[x + 1][y0] != null ||
-                        (board[x1][y1] != null && start.isSameColor(board[x1][y1])))
+            for (int x = x0 + 1; x < x1; x++) {
+                if (board[x][y0] != null)
                     return false;
-                else
-                    return true;
             }
         }
 
-        return false;
+        return true;
     }
 
-    private static final boolean verticalMove(Figure[][] board, Figure start, int x0, int y0, int x1, int y1) {
+    private static boolean verticalMove(Figure[][] board, int x0, int y0, int y1) {
         if (y0 > y1) {
-            for (int y = y0; y > y1; y--) {
-                if (board[x0][y - 1] != null || (board[x1][y1] != null &&
-                        board[x1][y - 1].isSameColor(start)))
+            for (int y = y0 - 1; y > y1; y--) {
+                if (board[x0][y] != null)
                     return false;
-                else
-                    return true;
             }
         } else if (y0 < y1) {
-            for (int y = y0; y < y1; y++) {
-                if (board[x0][y + 1] != null || (board[x1][y1] != null && board[x1][y + 1].isSameColor(start)))
+            for (int y = y0 + 1; y < y1; y++) {
+                if (board[x0][y] != null)
                     return false;
-                else
-                    return true;
             }
         }
 
-        return false;
+        return true;
     }
 
 }

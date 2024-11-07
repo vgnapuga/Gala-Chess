@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ru.vsu.cs.cg.oop.galaChess.engine.GameBoard;
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 import ru.vsu.cs.cg.oop.galaChess.figures.logic.King;
 
@@ -20,14 +19,14 @@ public class KingMovementTest {
 
     @Test
     void testValidMoveToEmptyCell() {
-        king0.move(board, 4, 4);
+        king0.moveTo(board, 4, 4);
 
         assertEquals(king0, board[4][4]);
         assertNull(board[3][3]);
     }
     @Test
     void testInvalidMoveToEmptyCell() {
-        assertThrows(IllegalArgumentException.class, () -> king0.move(board, 3, 5));
+        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 3, 5));
         assertEquals(king0, board[3][3]);
         assertNull(board[3][5]);
     }
@@ -36,7 +35,7 @@ public class KingMovementTest {
     void testValidMoveToOccupiedByOpponentColorCell() {
         King king1 = new King(FigureColor.BLACK, 4, 4, board);
 
-        king0.move(board, 4, 4);
+        king0.moveTo(board, 4, 4);
 
         assertEquals(king0, board[4][4]);
         assertNull(board[3][3]);
@@ -45,30 +44,30 @@ public class KingMovementTest {
     void testInvalidMoveToOccupiedBySameColorCell() {
         King king1 = new King(king0.getColor(), 4, 4, board);
 
-        assertThrows(IllegalArgumentException.class, () -> king0.move(board, 4, 4));
+        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 4, 4));
         assertEquals(king1, board[4][4]);
         assertEquals(king0, board[3][3]);
     }
 
     @Test
     void testValidMoveFromCenter() {
-        king0.move(board, 4, 4);
+        king0.moveTo(board, 4, 4);
 
-        king0.move(board, 4, 0);
+        king0.moveTo(board, 4, 0);
 
         assertEquals(king0, board[4][0]);
         assertNull(board[4][4]);
     }
     @Test
     void testInvalidMoveFromCenter() {
-        assertThrows(IllegalArgumentException.class, () -> king0.move(board, 0, 0));
+        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 0, 0));
         assertEquals(king0, board[3][3]);
         assertNotEquals(king0, board[0][0]);
     }
 
     @Test
     void testInvalidMoveToSameCell() {
-        assertThrows(IllegalArgumentException.class, () -> king0.move(board, 3, 3));
+        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 3, 3));
         assertEquals(king0, board[3][3]);
     }
 

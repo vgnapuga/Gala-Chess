@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import ru.vsu.cs.cg.oop.galaChess.engine.GameBoard;
+import ru.vsu.cs.cg.oop.galaChess.board.GameBoard;
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
 import static org.junit.jupiter.api.Assertions.*;

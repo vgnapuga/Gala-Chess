@@ -9,12 +9,9 @@ public class Pawn extends Figure implements Movable {
     }
 
     @Override
-    public void move(Figure[][] board, int x1, int y1) {
+    public void moveTo(Figure[][] board, int x1, int y1) {
         int x0 = this.getX();
         int y0 = this.getY();
-
-        Figure start = board[x0][y0];
-        Figure end = board[x1][y1];
 
         if (!isValidMove(board, x0, y0, x1, y1)) {
             throw new IllegalArgumentException("Invalid move");
@@ -25,7 +22,8 @@ public class Pawn extends Figure implements Movable {
     }
 
     private boolean isValidMove(Figure[][] board, int x0, int y0, int x1, int y1) {
-        if (x0 >= board[0].length || x1 >= board[0].length || y0 >= board.length || y1 >= board.length)
+        if (Movable.isOutOfBoard(x0) || Movable.isOutOfBoard(y0) ||
+                Movable.isOutOfBoard(x1) || Movable.isOutOfBoard(y1))
             return false;
 
         Figure start = board[x0][y0];

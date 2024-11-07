@@ -13,6 +13,13 @@ public class Figure {
         this.x = x;
         this.y = y;
 
+        this.setPosition(board, x, y);
+    }
+
+    public final void setPosition(Figure[][] board, final int x, final int y) {
+        this.x = x;
+        this.y = y;
+
         board[x][y] = this;
     }
 
@@ -24,13 +31,6 @@ public class Figure {
         return color;
     }
 
-    public final void setPosition(Figure[][] board, final int x, final int y) {
-        this.x = x;
-        this.y = y;
-
-        board[x][y] = this;
-    }
-
     public final int getX() {
         return x;
     }
@@ -39,7 +39,7 @@ public class Figure {
         return y;
     }
 
-    public final boolean isSameColor(Figure figure) {
+    public final boolean isSameColorWith(Figure figure) {
         return this.getColor() == figure.getColor();
     }
 

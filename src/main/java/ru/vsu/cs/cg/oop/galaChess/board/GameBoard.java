@@ -1,10 +1,7 @@
-package ru.vsu.cs.cg.oop.galaChess.engine;
+package ru.vsu.cs.cg.oop.galaChess.board;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
-import ru.vsu.cs.cg.oop.galaChess.figures.logic.Bishop;
-import ru.vsu.cs.cg.oop.galaChess.figures.logic.King;
-import ru.vsu.cs.cg.oop.galaChess.figures.logic.Pawn;
-import ru.vsu.cs.cg.oop.galaChess.figures.logic.Rook;
+import ru.vsu.cs.cg.oop.galaChess.figures.logic.*;
 
 public class GameBoard {
 
