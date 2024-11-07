@@ -1,3 +1,5 @@
+package engine;
+
 import org.junit.jupiter.api.Test;
 
 import ru.vsu.cs.cg.oop.galaChess.board.GameBoard;

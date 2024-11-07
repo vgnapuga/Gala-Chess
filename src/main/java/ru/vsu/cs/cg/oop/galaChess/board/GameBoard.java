@@ -18,7 +18,7 @@ public class GameBoard {
     private static void initializeBoard() {
         initializeKings();
         initializeRooks();
-        initialiceBishops();
+        initializeBishops();
         initializePawns();
     }
 
@@ -44,7 +44,7 @@ public class GameBoard {
         new Rook(FigureColor.BLACK, 9, 2, board);
     }
 
-    public static void initialiceBishops() {
+    public static void initializeBishops() {
         new Bishop(FigureColor.WHITE, 0, 8, board);
         new Bishop(FigureColor.WHITE, 1, 9, board);
         new Bishop(FigureColor.WHITE, 7, 9, board);

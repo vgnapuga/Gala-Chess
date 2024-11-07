@@ -48,8 +48,8 @@ public class Bishop extends Figure implements Movable {
         if (Math.abs(x1 - x0) != Math.abs(y1 - y0))
             return false;
 
-        int dx = (x1 > x0) ? 1 : -1;
-        int dy = (y1 > y0) ? 1 : -1;
+        int dx = Movable.delta(x1, x0);
+        int dy = Movable.delta(y1, y0);
 
         for (int i = 1; i < Math.abs(x1 - x0); i++) {
             if (board[x0 + i * dx][y0 + i * dy] != null)
