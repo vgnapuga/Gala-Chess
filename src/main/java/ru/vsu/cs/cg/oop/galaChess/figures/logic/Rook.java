@@ -49,39 +49,28 @@ public class Rook extends Figure implements Movable {
 
         if (x0 != x1)
             return horizontalMove(board, x0, y0, x1);
-        else if (y0 != y1)
+        else
             return verticalMove(board, x0, y0, y1);
-
-        return false;
     }
 
-    private static boolean horizontalMove(Figure[][] board, int x0, int y0, int x1) {
-        if (x0 > x1) {
-            for (int x = x0 - 1; x > x1; x--) {
-                if (board[x][y0] != null)
-                    return false;
-            }
-        } else if (x0 < x1) {
-            for (int x = x0 + 1; x < x1; x++) {
-                if (board[x][y0] != null)
-                    return false;
-            }
+
+    private static boolean verticalMove(Figure[][] board, int x0, int y0, int y1) {
+        int dy = (y1 > y0) ? 1 : -1;
+
+        for (int y = y0 + dy; y != y1; y += dy) {
+            if (board[x0][y] != null)
+                return false;
         }
 
         return true;
     }
 
-    private static boolean verticalMove(Figure[][] board, int x0, int y0, int y1) {
-        if (y0 > y1) {
-            for (int y = y0 - 1; y > y1; y--) {
-                if (board[x0][y] != null)
-                    return false;
-            }
-        } else if (y0 < y1) {
-            for (int y = y0 + 1; y < y1; y++) {
-                if (board[x0][y] != null)
-                    return false;
-            }
+    private static boolean horizontalMove(Figure[][] board, int y0, int x0, int x1) {
+        int dx = (x1 > x0) ? 1 : -1;
+
+        for (int x = x0 + dx; x != x1; x += dx) {
+            if (board[x][y0] != null)
+                return false;
         }
 
         return true;

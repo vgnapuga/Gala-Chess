@@ -73,9 +73,9 @@ public class RookMovementTest {
     void testMainDiagonalValidMoveFromCenterToEmptyCell() {
         Rook rook1 = new Rook(FigureColor.BLACK, 4, 4, board);
 
-        rook0.moveTo(board, 6, 6);
+        rook1.moveTo(board, 6, 6);
 
-        assertEquals(board[6][6], rook0);
+        assertEquals(board[6][6], rook1);
         assertNull(board[4][4]);
     }
     @Test
@@ -92,9 +92,9 @@ public class RookMovementTest {
     void testSideDiagonalValidMoveFromCenterToEmptyCell() {
         Rook rook1 = new Rook(FigureColor.BLACK, 4, 4, board);
 
-        rook0.moveTo(board, 6, 2);
+        rook1.moveTo(board, 6, 2);
 
-        assertEquals(board[6][2], rook0);
+        assertEquals(board[6][2], rook1);
         assertNull(board[4][4]);
     }
     @Test
