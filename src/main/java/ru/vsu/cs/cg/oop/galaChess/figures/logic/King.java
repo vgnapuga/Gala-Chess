@@ -2,14 +2,14 @@ package ru.vsu.cs.cg.oop.galaChess.figures.logic;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
-public class King extends Figure implements Movable {
+public final class King extends Figure implements Movable {
 
     public King(final FigureColor color, int x, int y, Figure[][] board) {
         super(FigureType.KING, color, x, y, board);
     }
 
     @Override
-    public void moveTo(Figure[][] board, int x1, int y1) {
+    public void moveTo(Figure[][] board, final int x1, final int y1) {
         int x0 = this.getX();
         int y0 = this.getY();
 
@@ -21,7 +21,8 @@ public class King extends Figure implements Movable {
         }
     }
 
-    private boolean isValidMove(Figure[][] board, int x0, int y0, int x1, int y1) {
+    private boolean isValidMove(final Figure[][] board, final int x0, final int y0,
+                                final int x1, final int y1) {
         if (Movable.isOutOfBoard(x0) || Movable.isOutOfBoard(y0) ||
                 Movable.isOutOfBoard(x1) || Movable.isOutOfBoard(y1))
             return false;
@@ -42,20 +43,20 @@ public class King extends Figure implements Movable {
         return false;
     }
 
-    private static boolean isInCentralSquare(int x0, int y0) {
+    private static boolean isInCentralSquare(final int x0, final int y0) {
         return (x0 == 4 || x0 == 5) && (y0 == 4 || y0 == 5);
     }
 
-    private static boolean isStartCoordinates(int x, int y) {
+    private static boolean isStartCoordinates(final int x, final int y) {
         return isWhiteStart(x, y) || isBlackStart(x, y);
     }
-    private static boolean isWhiteStart(int x, int y) {
+    private static boolean isWhiteStart(final int x, final int y) {
         return ((x < 4 || x > 5) && y == 9) ||
                 ((x < 3 || x > 6) && y == 8) ||
                 ((x < 2 || x > 7) && y == 7) ||
                 ((x == 0) || (x == 9) && y == 6);
     }
-    private static boolean isBlackStart(int x, int y) {
+    private static boolean isBlackStart(final int x, final int y) {
         return ((x < 4 || x > 5) && y == 0) ||
                 ((x < 3 || x > 6) && y == 1) ||
                 ((x < 2 || x > 7) && y == 2) ||

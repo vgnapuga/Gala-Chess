@@ -113,8 +113,45 @@ public class RookMovementTest {
     }
 
     @Test
-    void testValidMoveToNotEmptyCell() {
+    void testValidRookMoveToNotEmptyCell() {
+        Rook rook1 = new Rook(FigureColor.BLACK, 6, 6, board);
 
+        rook0.moveTo(board, 6, 6);
+
+        assertEquals(board[6][6], rook0);
+        assertNotEquals(board[6][6], rook1);
+        assertNull(board[3][6]);
+    }
+
+    @Test
+    void testInvalidRookMoveToNotEmptyCell() {
+        Rook rook1 = new Rook(FigureColor.WHITE, 6, 6, board);
+
+        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, 6, 6));
+        assertEquals(board[6][6], rook1);
+        assertEquals(board[3][6], rook0);
+    }
+
+    @Test
+    void testValidBishopMoveToNotEmptyCell() {
+        rook0.setPosition(board, 4, 4);
+        Rook rook1 = new Rook(FigureColor.BLACK, 6, 6, board);
+
+        rook0.moveTo(board, 6, 6);
+
+        assertEquals(board[6][6], rook0);
+        assertNotEquals(board[6][6], rook1);
+        assertNull(board[4][4]);
+    }
+
+    @Test
+    void testInvalidBishopMoveToNotEmptyCell() {
+        rook0.setPosition(board, 4, 4);
+        Rook rook1 = new Rook(FigureColor.WHITE, 6, 6, board);
+
+        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, 6, 6));
+        assertEquals(board[6][6], rook1);
+        assertEquals(board[4][4], rook0);
     }
 
 }

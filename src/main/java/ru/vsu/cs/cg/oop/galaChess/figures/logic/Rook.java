@@ -4,14 +4,14 @@ import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
 import static ru.vsu.cs.cg.oop.galaChess.figures.logic.Bishop.bishopMove;
 
-public class Rook extends Figure implements Movable {
+public final class Rook extends Figure implements Movable {
 
     public Rook(final FigureColor color, int x, int y, Figure[][] board) {
         super(FigureType.ROOK, color, x, y, board);
     }
 
     @Override
-    public void moveTo(Figure[][] board, int x1, int y1) {
+    public void moveTo(Figure[][] board, final int x1, final int y1) {
         int x0 = this.getX();
         int y0 = this.getY();
 
@@ -23,7 +23,8 @@ public class Rook extends Figure implements Movable {
         }
     }
 
-    private boolean isValidMove(Figure[][] board, int x0, int y0, int x1, int y1) {
+    private boolean isValidMove(final Figure[][] board, final int x0, final int y0,
+                                final int x1, final int y1) {
         if (Movable.isOutOfBoard(x0) || Movable.isOutOfBoard(y0) ||
                 Movable.isOutOfBoard(x1) || Movable.isOutOfBoard(y1))
             return false;
@@ -40,7 +41,8 @@ public class Rook extends Figure implements Movable {
             return rookMove(board, x0, y0, x1, y1);
     }
 
-    static boolean rookMove(Figure[][] board, int x0, int y0, int x1, int y1) {
+    static boolean rookMove(final Figure[][] board, final int x0, final int y0,
+                            final int x1, final int y1) {
         if (x0 != x1 && y0 != y1)
             return false;
 
@@ -50,7 +52,7 @@ public class Rook extends Figure implements Movable {
             return verticalMove(board, x0, y0, y1);
     }
 
-    private static boolean verticalMove(Figure[][] board, int x0, int y0, int y1) {
+    private static boolean verticalMove(final Figure[][] board, final int x0, final int y0, final int y1) {
         int dy = Movable.delta(y1, y0);
 
         for (int y = y0 + dy; (dy > 0 ? y < y1 : y > y1); y += dy) {
@@ -61,7 +63,7 @@ public class Rook extends Figure implements Movable {
         return true;
     }
 
-    private static boolean horizontalMove(Figure[][] board, int y0, int x0, int x1) {
+    private static boolean horizontalMove(final Figure[][] board, final int y0, final int x0, final int x1) {
         int dx = Movable.delta(x1, x0);
 
         for (int x = x0 + dx; (dx > 0 ? x < x1 : x > x1); x += dx) {

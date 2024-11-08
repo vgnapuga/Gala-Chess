@@ -2,14 +2,14 @@ package ru.vsu.cs.cg.oop.galaChess.figures.logic;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
-public class Pawn extends Figure implements Movable {
+public final class Pawn extends Figure implements Movable {
 
     public Pawn(final FigureColor color, int x, int y, Figure[][] board) {
         super(FigureType.PAWN, color, x, y, board);
     }
 
     @Override
-    public void moveTo(Figure[][] board, int x1, int y1) {
+    public void moveTo(final Figure[][] board, final int x1, final int y1) {
         int x0 = this.getX();
         int y0 = this.getY();
 
@@ -21,7 +21,8 @@ public class Pawn extends Figure implements Movable {
         }
     }
 
-    private boolean isValidMove(Figure[][] board, int x0, int y0, int x1, int y1) {
+    private boolean isValidMove(final Figure[][] board, final int x0, final int y0,
+                                final int x1, final int y1) {
         if (Movable.isOutOfBoard(x0) || Movable.isOutOfBoard(y0) ||
                 Movable.isOutOfBoard(x1) || Movable.isOutOfBoard(y1))
             return false;
