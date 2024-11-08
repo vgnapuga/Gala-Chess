@@ -1,7 +1,7 @@
 package ru.vsu.cs.cg.oop.galaChess.board;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
-import ru.vsu.cs.cg.oop.galaChess.figures.logic.*;
+import ru.vsu.cs.cg.oop.galaChess.figures.movement.*;
 
 public final class GameBoard {
 

@@ -1,12 +1,11 @@
 package figures.movement;
 
 import interfaces.PawnTest;
-import interfaces.RookAndBishopTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
-import ru.vsu.cs.cg.oop.galaChess.figures.logic.Pawn;
+import ru.vsu.cs.cg.oop.galaChess.figures.movement.Pawn;
 
 public class PawnMovementTest implements PawnTest {
 
@@ -18,6 +17,8 @@ public class PawnMovementTest implements PawnTest {
     public void boardSetUp() {
         board = new Figure[10][10];
     }
+
+    // NOT FROM CENTRE MOVEMENT TESTS
 
     @Test
     @Override
@@ -54,6 +55,8 @@ public class PawnMovementTest implements PawnTest {
     public void testInvalidMoveToNotEmptyCell() {
 
     }
+
+    // FROM CENTRE MOVEMENT TESTS
 
     @Test
     @Override

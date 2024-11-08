@@ -1,4 +1,4 @@
-package ru.vsu.cs.cg.oop.galaChess.figures.logic;
+package ru.vsu.cs.cg.oop.galaChess.figures.movement;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 

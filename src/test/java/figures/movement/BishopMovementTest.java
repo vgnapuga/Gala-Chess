@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
-import ru.vsu.cs.cg.oop.galaChess.figures.logic.Bishop;
+import ru.vsu.cs.cg.oop.galaChess.figures.movement.Bishop;
 
 public class BishopMovementTest implements RookAndBishopTest {
 
@@ -17,6 +17,8 @@ public class BishopMovementTest implements RookAndBishopTest {
     void boardSetUp() {
         board = new Figure[10][10];
     }
+
+    // NOT FROM CENTRE MOVEMENT TESTS
 
     @Test
     @Override
@@ -56,6 +58,14 @@ public class BishopMovementTest implements RookAndBishopTest {
 
     @Test
     @Override
+    public void testInvalidMoveThrowFigure() {
+
+    }
+
+    // FROM CENTRE MOVEMENT TESTS
+
+    @Test
+    @Override
     public void testInvalidMoveOutOfBoardFromCentre() {
 
     }
@@ -87,6 +97,12 @@ public class BishopMovementTest implements RookAndBishopTest {
     @Test
     @Override
     public void testInvalidMoveToNotEmptyCellFromCentre() {
+
+    }
+
+    @Test
+    @Override
+    public void testInvalidMoveThrowFigureFromCentre() {
 
     }
 

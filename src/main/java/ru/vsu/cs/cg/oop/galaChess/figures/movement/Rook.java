@@ -1,8 +1,8 @@
-package ru.vsu.cs.cg.oop.galaChess.figures.logic;
+package ru.vsu.cs.cg.oop.galaChess.figures.movement;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
-import static ru.vsu.cs.cg.oop.galaChess.figures.logic.Bishop.bishopMove;
+import static ru.vsu.cs.cg.oop.galaChess.figures.movement.Bishop.bishopMove;
 
 public final class Rook extends Figure implements Movable {
 

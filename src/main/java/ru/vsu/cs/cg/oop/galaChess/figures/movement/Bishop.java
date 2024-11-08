@@ -1,8 +1,8 @@
-package ru.vsu.cs.cg.oop.galaChess.figures.logic;
+package ru.vsu.cs.cg.oop.galaChess.figures.movement;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
-import static ru.vsu.cs.cg.oop.galaChess.figures.logic.Rook.rookMove;
+import static ru.vsu.cs.cg.oop.galaChess.figures.movement.Rook.rookMove;
 
 public final class Bishop extends Figure {
 
