@@ -10,7 +10,7 @@ public final class King extends Figure {
 
     @Override
     protected boolean isValidMove(final Figure[][] board, final int x0, final int y0,
-                                final int x1, final int y1) {
+                                  final int x1, final int y1) {
         if (isOutOfBoard(x0, y0) || isOutOfBoard(x1, y1))
             return false;
 
@@ -37,17 +37,18 @@ public final class King extends Figure {
     private static boolean isStartCoordinates(final int x, final int y) {
         return isWhiteStart(x, y) || isBlackStart(x, y);
     }
+
     private static boolean isWhiteStart(final int x, final int y) {
-        return ((x < 4 || x > 5) && y == 9) ||
-                ((x < 3 || x > 6) && y == 8) ||
-                ((x < 2 || x > 7) && y == 7) ||
-                ((x == 0) || (x == 9) && y == 6);
-    }
-    private static boolean isBlackStart(final int x, final int y) {
-        return ((x < 4 || x > 5) && y == 0) ||
-                ((x < 3 || x > 6) && y == 1) ||
-                ((x < 2 || x > 7) && y == 2) ||
-                ((x == 0) || (x == 9) && y == 3);
+        return (y == 9 && (x < 4 || x > 5)) ||
+                (y == 8 && (x < 3 || x > 6)) ||
+                (y == 7 && (x < 2 || x > 7)) ||
+                (y == 6 && (x == 0 || x == 9));
     }
 
+    private static boolean isBlackStart(final int x, final int y) {
+        return (y == 0 && (x < 4 || x > 5)) ||
+                (y == 1 && (x < 3 || x > 6)) ||
+                (y == 2 && (x < 2 || x > 7)) ||
+                (y == 3 && (x == 0 || x == 9));
+    }
 }

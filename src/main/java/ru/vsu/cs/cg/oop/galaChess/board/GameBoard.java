@@ -3,7 +3,7 @@ package ru.vsu.cs.cg.oop.galaChess.board;
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 import ru.vsu.cs.cg.oop.galaChess.figures.logic.*;
 
-public class GameBoard {
+public final class GameBoard {
 
     private static final int BOARD_HEIGHT = 10;
     private static final int BOARD_WIDTH = 10;
