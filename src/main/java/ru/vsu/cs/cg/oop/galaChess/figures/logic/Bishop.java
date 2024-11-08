@@ -4,29 +4,16 @@ import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
 import static ru.vsu.cs.cg.oop.galaChess.figures.logic.Rook.rookMove;
 
-public final class Bishop extends Figure implements Movable {
+public final class Bishop extends Figure {
 
     public Bishop(final FigureColor color, int x, int y, Figure[][] board) {
         super(FigureType.BISHOP, color, x, y, board);
     }
 
     @Override
-    public void moveTo(Figure[][] board, final int x1, final int y1) {
-        int x0 = this.getX();
-        int y0 = this.getY();
-
-        if (!isValidMove(board, x0, y0, x1, y1)) {
-            throw new IllegalArgumentException("Invalid move");
-        } else {
-            this.setPosition(board, x1, y1);
-            board[x0][y0] = null;
-        }
-    }
-
-    private boolean isValidMove(final Figure[][] board, final int x0, final int y0,
+    protected boolean isValidMove(final Figure[][] board, final int x0, final int y0,
                                 final int x1, final int y1) {
-        if (Movable.isOutOfBoard(x0) || Movable.isOutOfBoard(y0) ||
-                Movable.isOutOfBoard(x1) || Movable.isOutOfBoard(y1))
+        if (isOutOfBoard(x0, y0) || isOutOfBoard(x1, y1))
             return false;
 
         Figure start = board[x0][y0];
@@ -50,8 +37,8 @@ public final class Bishop extends Figure implements Movable {
         if (Math.abs(x1 - x0) != Math.abs(y1 - y0))
             return false;
 
-        int dx = Movable.delta(x1, x0);
-        int dy = Movable.delta(y1, y0);
+        int dx = x1 > x0 ? 1 : -1;
+        int dy = y1 > y0 ? 1 : -1;
 
         for (int i = 1; i < Math.abs(x1 - x0); i++) {
             if (board[x0 + i * dx][y0 + i * dy] != null)

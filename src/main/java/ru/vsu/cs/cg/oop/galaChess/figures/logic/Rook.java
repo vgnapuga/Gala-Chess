@@ -11,22 +11,9 @@ public final class Rook extends Figure implements Movable {
     }
 
     @Override
-    public void moveTo(Figure[][] board, final int x1, final int y1) {
-        int x0 = this.getX();
-        int y0 = this.getY();
-
-        if (!isValidMove(board, x0, y0, x1, y1)) {
-            throw new IllegalArgumentException("Invalid move");
-        } else {
-            this.setPosition(board, x1, y1);
-            board[x0][y0] = null;
-        }
-    }
-
-    private boolean isValidMove(final Figure[][] board, final int x0, final int y0,
+    protected boolean isValidMove(final Figure[][] board, final int x0, final int y0,
                                 final int x1, final int y1) {
-        if (Movable.isOutOfBoard(x0) || Movable.isOutOfBoard(y0) ||
-                Movable.isOutOfBoard(x1) || Movable.isOutOfBoard(y1))
+        if (isOutOfBoard(x0, y0) || isOutOfBoard(x1, y1))
             return false;
 
         Figure start = board[x0][y0];
@@ -53,7 +40,7 @@ public final class Rook extends Figure implements Movable {
     }
 
     private static boolean verticalMove(final Figure[][] board, final int x0, final int y0, final int y1) {
-        int dy = Movable.delta(y1, y0);
+        int dy = y1 > y0 ? 1 : -1;
 
         for (int y = y0 + dy; (dy > 0 ? y < y1 : y > y1); y += dy) {
             if (board[x0][y] != null)
@@ -64,7 +51,7 @@ public final class Rook extends Figure implements Movable {
     }
 
     private static boolean horizontalMove(final Figure[][] board, final int y0, final int x0, final int x1) {
-        int dx = Movable.delta(x1, x0);
+        int dx = x1 > x0 ? 1 : -1;
 
         for (int x = x0 + dx; (dx > 0 ? x < x1 : x > x1); x += dx) {
             if (board[x][y0] != null)
