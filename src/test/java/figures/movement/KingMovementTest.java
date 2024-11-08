@@ -1,5 +1,7 @@
 package figures.movement;
 
+import interfaces.KingTest;
+import interfaces.MovableTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +10,7 @@ import ru.vsu.cs.cg.oop.galaChess.figures.logic.King;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class KingMovementTest {
+public class KingMovementTest implements KingTest {
 
     private static Figure[][] board;
     private static King king0;
@@ -22,7 +24,8 @@ public class KingMovementTest {
     // NOT FROM CENTRE MOVEMENT
 
     @Test
-    void testInvalidMoveOutOfBoard() {
+    @Override
+    public void testInvalidMoveOutOfBoard() {
         king0 = notCentreSetUp();
 
         assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 10, 6));
@@ -30,7 +33,8 @@ public class KingMovementTest {
     }
 
     @Test
-    void testInvalidMoveToSameCell() {
+    @Override
+    public void testInvalidMoveToSameCell() {
         king0 = notCentreSetUp();
 
         assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, king0.getX(), king0.getY()));
@@ -38,7 +42,8 @@ public class KingMovementTest {
     }
 
     @Test
-    void testValidMoveToEmptyCell() {
+    @Override
+    public void testValidMoveToEmptyCell() {
         king0 = notCentreSetUp();
 
         king0.moveTo(board, 4, 6);
@@ -48,7 +53,8 @@ public class KingMovementTest {
     }
 
     @Test
-    void testInvalidMoveToEmptyCell() {
+    @Override
+    public void testInvalidMoveToEmptyCell() {
         king0 = notCentreSetUp();
 
         assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 5, 6));
@@ -57,7 +63,8 @@ public class KingMovementTest {
     }
 
     @Test
-    void testValidMoveToNotEmptyCell() {
+    @Override
+    public void testValidMoveToNotEmptyCell() {
         king0 = notCentreSetUp();
         king1 = new King(FigureColor.BLACK, board, 3, 7);
 
@@ -68,7 +75,8 @@ public class KingMovementTest {
     }
 
     @Test
-    void testInvalidMoveToNotEmptyCell() {
+    @Override
+    public void testInvalidMoveToNotEmptyCell() {
         king0 = notCentreSetUp();
         king1 = new King(FigureColor.WHITE, board, 3, 7);
 
@@ -80,7 +88,8 @@ public class KingMovementTest {
     // FROM CENTRE MOVEMENT
 
     @Test
-    void testInvalidMoveOutOfBoardFromCentre() {
+    @Override
+    public void testInvalidMoveOutOfBoardFromCentre() {
         king0 = centreSetUp();
 
         assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 10, 6));
@@ -88,7 +97,8 @@ public class KingMovementTest {
     }
 
     @Test
-    void testInvalidMoveToSameCellFromCentre() {
+    @Override
+    public void testInvalidMoveToSameCellFromCentre() {
         king0 = centreSetUp();
 
         assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, king0.getX(), king0.getY()));
@@ -96,7 +106,8 @@ public class KingMovementTest {
     }
 
     @Test
-    void testValidMoveFromCentreToEmptyCell() {
+    @Override
+    public void testValidMoveToEmptyCellFromCentre() {
         king0 = centreSetUp();
 
         king0.moveTo(board, 9, 5);
@@ -106,7 +117,8 @@ public class KingMovementTest {
     }
 
     @Test
-    void testInvalidMoveFromCentreToBlackStart() {
+    @Override
+    public void testInvalidMoveToBlackStartFromCentre() {
         king0 = centreSetUp();
 
         assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 0, 0));
@@ -114,7 +126,8 @@ public class KingMovementTest {
     }
 
     @Test
-    void testInvalidMoveFromCentreToWhiteStart() {
+    @Override
+    public void testInvalidMoveToWhiteStartFromCentre() {
         king0 = centreSetUp();
 
         assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 0, 9));
@@ -122,7 +135,8 @@ public class KingMovementTest {
     }
 
     @Test
-    void testValidMoveToNotEmptyCellFromCentre() {
+    @Override
+    public void testValidMoveToNotEmptyCellFromCentre() {
         king0 = centreSetUp();
         king1 = new King(FigureColor.BLACK, board, 0, 4);
 
@@ -133,7 +147,8 @@ public class KingMovementTest {
     }
 
     @Test
-    void testInvalidMoveToNotEmptyCellFromCentre() {
+    @Override
+    public void testInvalidMoveToNotEmptyCellFromCentre() {
         king0 = centreSetUp();
         king1 = new King(FigureColor.WHITE, board, 0, 4);
 
