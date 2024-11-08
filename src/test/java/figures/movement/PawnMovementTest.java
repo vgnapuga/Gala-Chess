@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 import ru.vsu.cs.cg.oop.galaChess.figures.logic.Bishop;
+import ru.vsu.cs.cg.oop.galaChess.figures.logic.King;
 import ru.vsu.cs.cg.oop.galaChess.figures.logic.Pawn;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,4 +23,11 @@ public class PawnMovementTest {
 
 
 
+    private static Pawn centreSetUp() {
+        return new Pawn(FigureColor.WHITE, board, 4, 5);
+    }
+
+    private static Pawn notCentreSetUp() {
+        return new Pawn(FigureColor.WHITE, board, 3, 6);
+    }
 }

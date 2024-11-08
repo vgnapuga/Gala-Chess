@@ -147,6 +147,7 @@ public class InitializationTest {
 
         return count;
     }
+
     private int count(FigureColor color) {
         int count = 0;
 
@@ -159,6 +160,7 @@ public class InitializationTest {
 
         return count;
     }
+
     private int count(FigureType type, FigureColor color) {
         int count = 0;
 
