@@ -4,8 +4,8 @@ import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
 public final class King extends Figure {
 
-    public King(final FigureColor color, int x, int y, Figure[][] board) {
-        super(FigureType.KING, color, x, y, board);
+    public King(final FigureColor color, Figure[][] board, int x, int y) {
+        super(FigureType.KING, color, board, x, y);
     }
 
     @Override

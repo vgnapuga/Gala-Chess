@@ -33,9 +33,9 @@ public class InitializationTest {
         int result = 0;
         int expected = 60;
 
-        for (int i = 0; i < figures.length; i++) {
-            for (int j = 0; j < figures[i].length; j++) {
-                if (figures[i][j] == null)
+        for (Figure[] figure : figures) {
+            for (Figure value : figure) {
+                if (value == null)
                     result++;
             }
         }
@@ -138,9 +138,9 @@ public class InitializationTest {
     private int count(FigureType type) {
         int count = 0;
 
-        for (int i = 0; i < figures.length; i++) {
-            for (int j = 0; j < figures[0].length; j++) {
-                if (figures[i][j] != null && figures[i][j].getType() == type)
+        for (Figure[] figure : figures) {
+            for (Figure value : figure) {
+                if (value != null && value.getType() == type)
                     count++;
             }
         }
@@ -150,9 +150,9 @@ public class InitializationTest {
     private int count(FigureColor color) {
         int count = 0;
 
-        for (int i = 0; i < figures.length; i++) {
-            for (int j = 0; j < figures[0].length; j++) {
-                if (figures[i][j] != null && figures[i][j].getColor() == color)
+        for (Figure[] figure : figures) {
+            for (Figure value : figure) {
+                if (value != null && value.getColor() == color)
                     count++;
             }
         }
@@ -162,10 +162,9 @@ public class InitializationTest {
     private int count(FigureType type, FigureColor color) {
         int count = 0;
 
-        for (int i = 0; i < figures.length; i++) {
-            for (int j = 0; j < figures[0].length; j++) {
-                if (figures[i][j] != null && figures[i][j].getType() == type
-                        && figures[i][j].getColor() == color)
+        for (Figure[] figure : figures) {
+            for (Figure value : figure) {
+                if (value != null && value.getType() == type && value.getColor() == color)
                     count++;
             }
         }

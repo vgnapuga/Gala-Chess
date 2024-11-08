@@ -5,21 +5,28 @@ import org.junit.jupiter.api.Test;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 import ru.vsu.cs.cg.oop.galaChess.figures.logic.Bishop;
+import ru.vsu.cs.cg.oop.galaChess.figures.logic.King;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BishopMovementTest {
 
-    Figure[][] board;
-    Bishop bishop0;
+    private static Figure[][] board;
+    private static Bishop bishop0;
+    private static Bishop bishop1;
 
     @BeforeEach
-    void setUp() {
+    void boardSetUp() {
         board = new Figure[10][10];
-        bishop0 = new Bishop(FigureColor.WHITE, 3, 6, board);
     }
 
-    @Test
-    void testBishopMovement() {
 
+
+    private static Bishop centreSetUp() {
+        return new Bishop(FigureColor.WHITE, board, 4, 5);
     }
 
+    private static Bishop notCentreSetUp() {
+        return new Bishop(FigureColor.WHITE, board, 3, 6);
+    }
 }

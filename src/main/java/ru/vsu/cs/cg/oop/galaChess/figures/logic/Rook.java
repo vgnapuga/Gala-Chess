@@ -6,8 +6,8 @@ import static ru.vsu.cs.cg.oop.galaChess.figures.logic.Bishop.bishopMove;
 
 public final class Rook extends Figure implements Movable {
 
-    public Rook(final FigureColor color, int x, int y, Figure[][] board) {
-        super(FigureType.ROOK, color, x, y, board);
+    public Rook(final FigureColor color, Figure[][] board, int x, int y) {
+        super(FigureType.ROOK, color, board, x, y);
     }
 
     @Override

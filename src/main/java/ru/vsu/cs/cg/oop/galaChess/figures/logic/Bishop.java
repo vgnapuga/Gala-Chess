@@ -6,8 +6,8 @@ import static ru.vsu.cs.cg.oop.galaChess.figures.logic.Rook.rookMove;
 
 public final class Bishop extends Figure {
 
-    public Bishop(final FigureColor color, int x, int y, Figure[][] board) {
-        super(FigureType.BISHOP, color, x, y, board);
+    public Bishop(final FigureColor color, Figure[][] board, int x, int y) {
+        super(FigureType.BISHOP, color, board, x, y);
     }
 
     @Override

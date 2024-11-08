@@ -23,71 +23,63 @@ public final class GameBoard {
     }
 
     private static void initializeKings() {
-        new King(FigureColor.WHITE, 0, 9, board);
-        new King(FigureColor.WHITE, 9, 9, board);
+        new King(FigureColor.WHITE, board, 0, 9);
+        new King(FigureColor.WHITE, board, 9, 9);
 
-        new King(FigureColor.BLACK, 0, 0, board);
-        new King(FigureColor.BLACK, 9, 0, board);
+        new King(FigureColor.BLACK, board, 0, 0);
+        new King(FigureColor.BLACK, board, 9, 0);
     }
 
     private static void initializeRooks() {
-        new Rook(FigureColor.WHITE, 0, 7, board);
-        new Rook(FigureColor.WHITE, 1, 8, board);
-        new Rook(FigureColor.WHITE, 2, 9, board);
-        new Rook(FigureColor.WHITE, 8, 9, board);
-        new Rook(FigureColor.WHITE, 9, 8, board);
+        new Rook(FigureColor.WHITE, board, 0, 7);
+        new Rook(FigureColor.WHITE, board, 1, 8);
+        new Rook(FigureColor.WHITE, board, 2, 9);
+        new Rook(FigureColor.WHITE, board, 8, 9);
+        new Rook(FigureColor.WHITE, board, 9, 8);
 
-        new Rook(FigureColor.BLACK, 0, 1, board);
-        new Rook(FigureColor.BLACK, 1, 0, board);
-        new Rook(FigureColor.BLACK, 7, 0, board);
-        new Rook(FigureColor.BLACK, 8, 1, board);
-        new Rook(FigureColor.BLACK, 9, 2, board);
+        new Rook(FigureColor.BLACK, board, 0, 1);
+        new Rook(FigureColor.BLACK, board, 1, 0);
+        new Rook(FigureColor.BLACK, board, 7, 0);
+        new Rook(FigureColor.BLACK, board, 8, 1);
+        new Rook(FigureColor.BLACK, board, 9, 2);
     }
 
     public static void initializeBishops() {
-        new Bishop(FigureColor.WHITE, 0, 8, board);
-        new Bishop(FigureColor.WHITE, 1, 9, board);
-        new Bishop(FigureColor.WHITE, 7, 9, board);
-        new Bishop(FigureColor.WHITE, 8, 8, board);
-        new Bishop(FigureColor.WHITE, 9, 7, board);
+        new Bishop(FigureColor.WHITE, board, 0, 8);
+        new Bishop(FigureColor.WHITE, board, 1, 9);
+        new Bishop(FigureColor.WHITE, board, 7, 9);
+        new Bishop(FigureColor.WHITE, board, 8, 8);
+        new Bishop(FigureColor.WHITE, board, 9, 7);
 
-        new Bishop(FigureColor.BLACK, 2, 0, board);
-        new Bishop(FigureColor.BLACK, 1, 1, board);
-        new Bishop(FigureColor.BLACK, 0, 2, board);
-        new Bishop(FigureColor.BLACK, 8, 0, board);
-        new Bishop(FigureColor.BLACK, 9, 1, board);
+        new Bishop(FigureColor.BLACK, board, 2, 0);
+        new Bishop(FigureColor.BLACK, board, 1, 1);
+        new Bishop(FigureColor.BLACK, board, 0, 2);
+        new Bishop(FigureColor.BLACK, board, 8, 0);
+        new Bishop(FigureColor.BLACK, board, 9, 1);
     }
 
     private static void initializePawns() {
-        new Pawn(FigureColor.WHITE, 0, 6, board);
-        new Pawn(FigureColor.WHITE, 1, 7, board);
-        new Pawn(FigureColor.WHITE, 2, 8, board);
-        new Pawn(FigureColor.WHITE, 3, 9, board);
-        new Pawn(FigureColor.WHITE, 6, 9, board);
-        new Pawn(FigureColor.WHITE, 7, 8, board);
-        new Pawn(FigureColor.WHITE, 8, 7, board);
-        new Pawn(FigureColor.WHITE, 9, 6, board);
+        new Pawn(FigureColor.WHITE, board, 0, 6);
+        new Pawn(FigureColor.WHITE, board, 1, 7);
+        new Pawn(FigureColor.WHITE, board, 2, 8);
+        new Pawn(FigureColor.WHITE, board, 3, 9);
+        new Pawn(FigureColor.WHITE, board, 6, 9);
+        new Pawn(FigureColor.WHITE, board, 7, 8);
+        new Pawn(FigureColor.WHITE, board, 8, 7);
+        new Pawn(FigureColor.WHITE, board, 9, 6);
 
-        new Pawn(FigureColor.BLACK, 0, 3, board);
-        new Pawn(FigureColor.BLACK, 1, 2, board);
-        new Pawn(FigureColor.BLACK, 2, 1, board);
-        new Pawn(FigureColor.BLACK, 3, 0, board);
-        new Pawn(FigureColor.BLACK, 6, 0, board);
-        new Pawn(FigureColor.BLACK, 7, 1, board);
-        new Pawn(FigureColor.BLACK, 8, 2, board);
-        new Pawn(FigureColor.BLACK, 9, 3, board);
+        new Pawn(FigureColor.BLACK, board, 0, 3);
+        new Pawn(FigureColor.BLACK, board, 1, 2);
+        new Pawn(FigureColor.BLACK, board, 2, 1);
+        new Pawn(FigureColor.BLACK, board, 3, 0);
+        new Pawn(FigureColor.BLACK, board, 6, 0);
+        new Pawn(FigureColor.BLACK, board, 7, 1);
+        new Pawn(FigureColor.BLACK, board, 8, 2);
+        new Pawn(FigureColor.BLACK, board, 9, 3);
     }
 
-    public final Figure[][] getBoard() {
+    public Figure[][] getBoard() {
         return board;
-    }
-
-    public final int getHeight() {
-        return BOARD_HEIGHT;
-    }
-
-    public final int getWidth() {
-        return BOARD_WIDTH;
     }
 
 }

@@ -4,8 +4,8 @@ import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
 public final class Pawn extends Figure {
 
-    public Pawn(final FigureColor color, int x, int y, Figure[][] board) {
-        super(FigureType.PAWN, color, x, y, board);
+    public Pawn(final FigureColor color, Figure[][] board, int x, int y) {
+        super(FigureType.PAWN, color, board, x, y);
     }
 
     @Override

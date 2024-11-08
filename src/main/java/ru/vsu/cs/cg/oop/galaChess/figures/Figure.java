@@ -7,7 +7,7 @@ public class Figure implements Movable {
     private int x;
     private int y;
 
-    public Figure(final FigureType type, final FigureColor color, int x, int y, Figure[][] board) {
+    public Figure(final FigureType type, final FigureColor color, Figure[][] board, int x, int y) {
         this.type = type;
         this.color = color;
         this.x = x;
