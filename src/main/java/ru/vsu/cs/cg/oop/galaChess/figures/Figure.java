@@ -1,6 +1,6 @@
 package ru.vsu.cs.cg.oop.galaChess.figures;
 
-public class Figure implements Movable {
+public abstract class Figure {
 
     private final FigureType type;
     private final FigureColor color;
@@ -16,7 +16,6 @@ public class Figure implements Movable {
         this.setPosition(board, x, y);
     }
 
-    @Override
     public void moveTo(Figure[][] board, final int x1, final int y1) {
         int x0 = this.getX();
         int y0 = this.getY();
@@ -34,7 +33,44 @@ public class Figure implements Movable {
         return false;
     }
 
-    @Override
+    protected boolean move(Figure[][] board, final int x0, final int y0,
+                           final int x1, final int y1) {
+        if ((isOutOfBoard(x0, y0) || isOutOfBoard(x1, y1)))
+            return false;
+
+        Figure start = board[x0][y0];
+        Figure end = board[x1][y1];
+
+        if (start == null || (x0 == x1 && y0 == y1) || (board[x1][y1] != null && start.isSameColorWith(end)))
+            return false;
+
+        if (x0 == x1) {
+            int dy = y1 > y0 ? 1 : -1;
+
+            for (int y = y0 + dy; y != y1; y += dy) {
+                if (board[x0][y] != null)
+                    return false;
+            }
+        } else if (y0 == y1) {
+            int dx = x1 > x0 ? 1 : -1;
+
+            for (int x = x0 + dx; x != x1; x += dx) {
+                if (board[x][y0] != null)
+                    return false;
+            }
+        } else {
+            int dx = x1 > x0 ? 1 : -1;
+            int dy = y1 > y0 ? 1 : -1;
+
+            for (int x = x0 + dx, y = y0 + dy; x != x1 && y != y1; x += dx, y += dy) {
+                if (board[x][y] != null)
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
     public boolean isOutOfBoard(final int coordinate1, final int coordinate2) {
         return coordinate1 < 0 || coordinate1 > 9 ||
                 coordinate2 < 0 || coordinate2 > 9;
