@@ -21,11 +21,11 @@ public class Figure implements Movable {
         int x0 = this.getX();
         int y0 = this.getY();
 
-        if (!isValidMove(board, x0, y0, x1, y1)) {
-            throw new IllegalArgumentException("Invalid move");
-        } else {
+        if (isValidMove(board, x0, y0, x1, y1)) {
             this.setPosition(board, x1, y1);
             board[x0][y0] = null;
+        } else {
+            throw new IllegalArgumentException("Invalid move");
         }
     }
 

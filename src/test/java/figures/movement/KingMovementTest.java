@@ -29,6 +29,7 @@ public class KingMovementTest implements KingTest {
 
         assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 10, 6));
         assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 6, 10));
+        assertSame(notCentreStartPos(), king0);
     }
 
     @Test
