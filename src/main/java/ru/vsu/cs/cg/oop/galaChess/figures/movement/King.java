@@ -14,7 +14,8 @@ public final class King extends Figure {
         int dx = Math.abs(x1 - x0);
         int dy = Math.abs(y1 - y0);
 
-        if ((dx <= 1 && dy <= 1) || (isInCentralSquare(x0, y0) && (!isStartCoordinates(x1, y1))))
+        if ((isInCentralSquare(x0, y0) && (!isStartCoordinates(x1, y1))) ||
+                (dx <= 1 && dy <= 1))
             return move(board, x0, y0, x1, y1);
 
         return false;
