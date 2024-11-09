@@ -1,5 +1,7 @@
 package ru.vsu.cs.cg.oop.galaChess.figures;
 
+import ru.vsu.cs.cg.oop.galaChess.exceptions.InvalidMoveException;
+
 public abstract class Figure {
 
     private final FigureType type;
@@ -24,7 +26,7 @@ public abstract class Figure {
             this.setPosition(board, x1, y1);
             board[x0][y0] = null;
         } else {
-            throw new IllegalArgumentException("Invalid move");
+            throw new InvalidMoveException("Cannot move " + this.getType() + " from (" + x1 + "; " + y1 + ") to (" + x0 + "; " + y0 + ")");
         }
     }
 

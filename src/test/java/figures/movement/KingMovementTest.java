@@ -4,6 +4,7 @@ import interfaces.KingTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ru.vsu.cs.cg.oop.galaChess.exceptions.InvalidMoveException;
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 import ru.vsu.cs.cg.oop.galaChess.figures.movement.King;
 
@@ -27,8 +28,8 @@ public class KingMovementTest implements KingTest {
     public void testInvalidMoveOutOfBoard() {
         king0 = notCentreSetUp();
 
-        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 10, 6));
-        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 6, 10));
+        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, 10, 6));
+        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, 6, 10));
         assertSame(notCentreStartPos(), king0);
     }
 
@@ -37,7 +38,7 @@ public class KingMovementTest implements KingTest {
     public void testInvalidMoveToSameCell() {
         king0 = notCentreSetUp();
 
-        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, king0.getX(), king0.getY()));
+        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, king0.getX(), king0.getY()));
         assertSame(notCentreStartPos(), king0);
     }
 
@@ -57,7 +58,7 @@ public class KingMovementTest implements KingTest {
     public void testInvalidMoveToEmptyCell() {
         king0 = notCentreSetUp();
 
-        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 5, 6));
+        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, 5, 6));
         assertSame(board[3][6], king0);
         assertNull(board[5][6]);
     }
@@ -80,7 +81,7 @@ public class KingMovementTest implements KingTest {
         king0 = notCentreSetUp();
         king1 = new King(FigureColor.WHITE, board, 3, 7);
 
-        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 3, 7));
+        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, 3, 7));
         assertSame(notCentreStartPos(), king0);
         assertSame(board[3][7], king1);
     }
@@ -92,8 +93,8 @@ public class KingMovementTest implements KingTest {
     public void testInvalidMoveOutOfBoardFromCentre() {
         king0 = centreSetUp();
 
-        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 10, 6));
-        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 6, 10));
+        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, 10, 6));
+        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, 6, 10));
     }
 
     @Test
@@ -101,7 +102,7 @@ public class KingMovementTest implements KingTest {
     public void testInvalidMoveToSameCellFromCentre() {
         king0 = centreSetUp();
 
-        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, king0.getX(), king0.getY()));
+        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, king0.getX(), king0.getY()));
         assertSame(centreStartPos(), king0);
     }
 
@@ -121,7 +122,7 @@ public class KingMovementTest implements KingTest {
     public void testInvalidMoveToBlackStartFromCentre() {
         king0 = centreSetUp();
 
-        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 0, 0));
+        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, 0, 0));
         assertSame(centreStartPos(), king0);
     }
 
@@ -130,7 +131,7 @@ public class KingMovementTest implements KingTest {
     public void testInvalidMoveToWhiteStartFromCentre() {
         king0 = centreSetUp();
 
-        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 0, 9));
+        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, 0, 9));
         assertSame(centreStartPos(), king0);
     }
 
@@ -152,7 +153,7 @@ public class KingMovementTest implements KingTest {
         king0 = centreSetUp();
         king1 = new King(FigureColor.WHITE, board, 0, 4);
 
-        assertThrows(IllegalArgumentException.class, () -> king0.moveTo(board, 0, 4));
+        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, 0, 4));
         assertSame(centreStartPos(), king0);
         assertSame(board[0][4], king1);
     }

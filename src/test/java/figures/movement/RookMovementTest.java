@@ -4,6 +4,7 @@ import interfaces.RookAndBishopTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ru.vsu.cs.cg.oop.galaChess.exceptions.InvalidMoveException;
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 import ru.vsu.cs.cg.oop.galaChess.figures.movement.Rook;
 
@@ -27,8 +28,8 @@ public class RookMovementTest implements RookAndBishopTest {
     public void testInvalidMoveOutOfBoard() {
         rook0 = notCentreSetUp();
 
-        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, 10, 6));
-        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, 3, 10));
+        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 10, 6));
+        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 3, 10));
         assertSame(notCentreStartPos(), rook0);
     }
 
@@ -37,7 +38,7 @@ public class RookMovementTest implements RookAndBishopTest {
     public void testInvalidMoveToSameCell() {
         rook0 = notCentreSetUp();
 
-        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, rook0.getX(), rook0.getY()));
+        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, rook0.getX(), rook0.getY()));
         assertSame(notCentreStartPos(), rook0);
     }
 
@@ -60,7 +61,7 @@ public class RookMovementTest implements RookAndBishopTest {
     public void testInvalidMoveToEmptyCell() {
         rook0 = notCentreSetUp();
 
-        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, 4, 7));
+        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 4, 7));
         assertSame(notCentreStartPos(), rook0);
     }
 
@@ -82,7 +83,7 @@ public class RookMovementTest implements RookAndBishopTest {
         rook0 = notCentreSetUp();
         rook1 = new Rook(FigureColor.WHITE, board, 3, 7);
 
-        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, 3, 7));
+        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 3, 7));
         assertSame(notCentreStartPos(), rook0);
         assertSame(board[3][7], rook1);
     }
@@ -93,7 +94,7 @@ public class RookMovementTest implements RookAndBishopTest {
         rook0 = notCentreSetUp();
         rook1 = new Rook(FigureColor.BLACK, board, 3, 7);
 
-        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, 3, 8));
+        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 3, 8));
         assertSame(notCentreStartPos(), rook0);
         assertSame(board[3][7], rook1);
         assertNull(board[3][8]);
@@ -106,8 +107,8 @@ public class RookMovementTest implements RookAndBishopTest {
     public void testInvalidMoveOutOfBoardFromCentre() {
         rook0 = centreSetUp();
 
-        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, 10, 7));
-        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, 4, 10));
+        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 10, 7));
+        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 4, 10));
         assertSame(centreStartPos(), rook0);
     }
 
@@ -116,7 +117,7 @@ public class RookMovementTest implements RookAndBishopTest {
     public void testInvalidMoveToSameCellFromCentre() {
         rook0 = centreSetUp();
 
-        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, rook0.getX(), rook0.getY()));
+        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, rook0.getX(), rook0.getY()));
         assertSame(centreStartPos(), rook0);
     }
 
@@ -136,7 +137,7 @@ public class RookMovementTest implements RookAndBishopTest {
     public void testInvalidMoveToEmptyCellFromCentre() {
         rook0 = centreSetUp();
 
-        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, 4, 6));
+        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 4, 6));
         assertSame(centreStartPos(), rook0);
         assertNull(board[4][6]);
     }
@@ -159,7 +160,7 @@ public class RookMovementTest implements RookAndBishopTest {
         rook0 = centreSetUp();
         rook1 = new Rook(FigureColor.WHITE, board, 5, 6);
 
-        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, 5, 6));
+        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 5, 6));
         assertSame(centreStartPos(), rook0);
         assertEquals(board[5][6], rook1);
     }
@@ -170,7 +171,7 @@ public class RookMovementTest implements RookAndBishopTest {
         rook0 = centreSetUp();
         rook1 = new Rook(FigureColor.BLACK, board, 5, 6);
 
-        assertThrows(IllegalArgumentException.class, () -> rook0.moveTo(board, 6, 7));
+        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 6, 7));
         assertSame(centreStartPos(), rook0);
         assertSame(board[5][6], rook1);
         assertNull(board[6][7]);
