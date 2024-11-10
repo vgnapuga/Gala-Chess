@@ -1,5 +1,6 @@
 package ru.vsu.cs.cg.oop.galaChess.figures;
 
+import ru.vsu.cs.cg.oop.galaChess.exceptions.InvalidCoordinateException;
 import ru.vsu.cs.cg.oop.galaChess.exceptions.InvalidMoveException;
 
 public abstract class Figure {
@@ -26,14 +27,16 @@ public abstract class Figure {
             this.setPosition(board, x1, y1);
             board[x0][y0] = null;
         } else {
-            throw new InvalidMoveException("Cannot move " + this.getColor() + " " + this.getType() + " from (" + x1 + "; " + y1 + ") to (" + x0 + "; " + y0 + ")");
+            throw new InvalidMoveException(this.getColor(), this.getType(), x0, y0, x1, y1);
         }
     }
 
     private boolean isValidMove(final Figure[][] board, final int x0, final int y0,
-                                  final int x1, final int y1) {
-        if ((isOutOfBoard(x0, y0) || isOutOfBoard(x1, y1)))
-            throw new InvalidMoveException("Coordinates [(" + x0 + "; " + y0 + "), (" + x1 + "; " + y1 + ")] out of board");
+                                final int x1, final int y1) {
+        if (isOutOfBoard(x0, y0))
+            throw new InvalidCoordinateException(x0, y0);
+        else if (isOutOfBoard(x1, y1))
+            throw new InvalidCoordinateException(x1, y1);
         else if (this.isMiddleMove(x1, y1) || this.isNotMiddleMove(x1, y1))
             return isPathClear(board, x0, y0, x1, y1);
 
@@ -41,10 +44,11 @@ public abstract class Figure {
     }
 
     protected abstract boolean isMiddleMove(final int x1, final int y1);
+
     protected abstract boolean isNotMiddleMove(final int x1, final int y1);
 
     private static boolean isPathClear(Figure[][] board, final int x0, final int y0,
-                                  final int x1, final int y1) {
+                                       final int x1, final int y1) {
         Figure start = board[x0][y0];
         Figure destination = board[x1][y1];
 
@@ -94,6 +98,7 @@ public abstract class Figure {
     public final FigureType getType() {
         return type;
     }
+
     public final FigureColor getColor() {
         return color;
     }
@@ -101,6 +106,7 @@ public abstract class Figure {
     public final int getX() {
         return x;
     }
+
     public final int getY() {
         return y;
     }

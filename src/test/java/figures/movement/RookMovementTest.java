@@ -4,6 +4,7 @@ import interfaces.RookAndBishopTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ru.vsu.cs.cg.oop.galaChess.exceptions.InvalidCoordinateException;
 import ru.vsu.cs.cg.oop.galaChess.exceptions.InvalidMoveException;
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 import ru.vsu.cs.cg.oop.galaChess.figures.movement.Rook;
@@ -28,8 +29,8 @@ public class RookMovementTest implements RookAndBishopTest {
     public void testInvalidMoveOutOfBoard() {
         rook0 = notCentreSetUp();
 
-        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 10, 6));
-        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 3, 10));
+        assertThrows(InvalidCoordinateException.class, () -> rook0.moveTo(board, 10, 6));
+        assertThrows(InvalidCoordinateException.class, () -> rook0.moveTo(board, 3, 10));
         assertSame(notCentreStartPos(), rook0);
     }
 
@@ -107,8 +108,8 @@ public class RookMovementTest implements RookAndBishopTest {
     public void testInvalidMoveOutOfBoardFromCentre() {
         rook0 = centreSetUp();
 
-        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 10, 7));
-        assertThrows(InvalidMoveException.class, () -> rook0.moveTo(board, 4, 10));
+        assertThrows(InvalidCoordinateException.class, () -> rook0.moveTo(board, 10, 7));
+        assertThrows(InvalidCoordinateException.class, () -> rook0.moveTo(board, 4, 10));
         assertSame(centreStartPos(), rook0);
     }
 

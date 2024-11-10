@@ -1,17 +1,11 @@
 package ru.vsu.cs.cg.oop.galaChess.exceptions;
 
+import ru.vsu.cs.cg.oop.galaChess.figures.*;
+
 public class InvalidMoveException extends RuntimeException {
 
-    private final String message;
-
-    public InvalidMoveException(String message) {
-        super(message);
-        this.message = message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
+    public InvalidMoveException(FigureColor color, FigureType type, int x0, int y0, int x1, int y1) {
+        super("Cannot move " + color + " " + type + " from (" + x1 + "; " + y1 + ") to (" + x0 + "; " + y0 + ")");
     }
 
 }

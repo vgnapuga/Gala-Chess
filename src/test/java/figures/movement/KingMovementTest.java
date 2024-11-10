@@ -4,6 +4,7 @@ import interfaces.KingTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ru.vsu.cs.cg.oop.galaChess.exceptions.InvalidCoordinateException;
 import ru.vsu.cs.cg.oop.galaChess.exceptions.InvalidMoveException;
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 import ru.vsu.cs.cg.oop.galaChess.figures.movement.King;
@@ -28,8 +29,8 @@ public class KingMovementTest implements KingTest {
     public void testInvalidMoveOutOfBoard() {
         king0 = notCentreSetUp();
 
-        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, 10, 6));
-        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, 6, 10));
+        assertThrows(InvalidCoordinateException.class, () -> king0.moveTo(board, 10, 6));
+        assertThrows(InvalidCoordinateException.class, () -> king0.moveTo(board, 6, 10));
         assertSame(notCentreStartPos(), king0);
     }
 
@@ -93,8 +94,8 @@ public class KingMovementTest implements KingTest {
     public void testInvalidMoveOutOfBoardFromCentre() {
         king0 = centreSetUp();
 
-        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, 10, 6));
-        assertThrows(InvalidMoveException.class, () -> king0.moveTo(board, 6, 10));
+        assertThrows(InvalidCoordinateException.class, () -> king0.moveTo(board, 10, 6));
+        assertThrows(InvalidCoordinateException.class, () -> king0.moveTo(board, 6, 10));
     }
 
     @Test
