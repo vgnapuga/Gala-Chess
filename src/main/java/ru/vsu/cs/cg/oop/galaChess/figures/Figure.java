@@ -44,7 +44,6 @@ public abstract class Figure {
     }
 
     protected abstract boolean isMiddleMove(final int x1, final int y1);
-
     protected abstract boolean isNotMiddleMove(final int x1, final int y1);
 
     private static boolean isPathClear(Figure[][] board, final int x0, final int y0,
@@ -98,7 +97,6 @@ public abstract class Figure {
     public final FigureType getType() {
         return type;
     }
-
     public final FigureColor getColor() {
         return color;
     }
@@ -106,7 +104,6 @@ public abstract class Figure {
     public final int getX() {
         return x;
     }
-
     public final int getY() {
         return y;
     }

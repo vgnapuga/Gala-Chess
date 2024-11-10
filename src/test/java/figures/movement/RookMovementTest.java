@@ -181,7 +181,6 @@ public class RookMovementTest implements RookAndBishopTest {
     private static Rook centreSetUp() {
         return new Rook(FigureColor.WHITE, board, 4, 5);
     }
-
     private static Figure centreStartPos() {
         return board[4][5];
     }
@@ -189,7 +188,6 @@ public class RookMovementTest implements RookAndBishopTest {
     private static Rook notCentreSetUp() {
         return new Rook(FigureColor.WHITE, board, 3, 6);
     }
-
     private static Figure notCentreStartPos() {
         return board[3][6];
     }
