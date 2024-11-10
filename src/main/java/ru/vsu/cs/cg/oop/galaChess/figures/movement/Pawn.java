@@ -2,19 +2,10 @@ package ru.vsu.cs.cg.oop.galaChess.figures.movement;
 
 import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
-public final class Pawn extends Figure  implements Movable {
+public final class Pawn extends Figure {
 
     public Pawn(final FigureColor color, Figure[][] board, int x, int y) {
         super(FigureType.PAWN, color, board, x, y);
-    }
-
-    @Override
-    protected boolean isValidMove(final Figure[][] board, final int x0, final int y0,
-                                  final int x1, final int y1) {
-        int dx = Math.abs(x1 - x0);
-        int dy = Math.abs(y1 - y0);
-
-        return false;
     }
 
     @Override
