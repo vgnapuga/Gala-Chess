@@ -1,13 +1,8 @@
 package ru.vsu.cs.cg.oop.galaChess.engine;
 
 import ru.vsu.cs.cg.oop.galaChess.board.GameBoard;
-import ru.vsu.cs.cg.oop.galaChess.exceptions.InvalidMoveException;
-import ru.vsu.cs.cg.oop.galaChess.exceptions.InvalidTurnExceprion;
 import ru.vsu.cs.cg.oop.galaChess.exceptions.InvalidTurnException;
-import ru.vsu.cs.cg.oop.galaChess.figures.Figure;
-import ru.vsu.cs.cg.oop.galaChess.figures.FigureColor;
-import ru.vsu.cs.cg.oop.galaChess.figures.FigureType;
-import ru.vsu.cs.cg.oop.galaChess.figures.movement.King;
+import ru.vsu.cs.cg.oop.galaChess.figures.*;
 
 public final class GameEngine {
 

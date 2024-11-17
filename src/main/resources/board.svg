@@ -8,7 +8,7 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
-   sodipodi:docname="рисунок.svg"
+   sodipodi:docname="board.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.12621049"
-     inkscape:cx="392.20196"
-     inkscape:cy="2174.9382"
+     inkscape:zoom="0.19179812"
+     inkscape:cx="2322.7548"
+     inkscape:cy="1921.291"
      inkscape:window-width="1920"
      inkscape:window-height="1011"
      inkscape:window-x="0"
@@ -40,6 +40,13 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0.75199577,0.75199577)">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2"
+       id="rect1044"
+       width="1000"
+       height="1000"
+       x="0.24800423"
+       y="0.24800423" />
     <g
        id="g2261"
        transform="matrix(0.99900095,0,0,0.9990015,-4.9939026e-4,-4.9914084e-4)">
