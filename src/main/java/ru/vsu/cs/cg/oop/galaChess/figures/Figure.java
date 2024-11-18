@@ -31,7 +31,8 @@ public abstract class Figure {
         }
     }
 
-    private boolean isValidMove(final Figure[][] board, final int x0, final int y0,
+    private boolean isValidMove(final Figure[][] board,
+                                final int x0, final int y0,
                                 final int x1, final int y1) {
         if (isOutOfBoard(x0, y0))
             throw new InvalidCoordinateException(x0, y0);
@@ -46,7 +47,8 @@ public abstract class Figure {
     protected abstract boolean isMiddleMove(final int x1, final int y1);
     protected abstract boolean isNotMiddleMove(final int x1, final int y1);
 
-    private static boolean isPathClear(Figure[][] board, final int x0, final int y0,
+    private static boolean isPathClear(Figure[][] board,
+                                       final int x0, final int y0,
                                        final int x1, final int y1) {
         Figure start = board[x0][y0];
         Figure destination = board[x1][y1];
@@ -84,7 +86,7 @@ public abstract class Figure {
 
     public boolean isOutOfBoard(final int coordinate1, final int coordinate2) {
         return coordinate1 < 0 || coordinate1 > 9 ||
-                coordinate2 < 0 || coordinate2 > 9;
+               coordinate2 < 0 || coordinate2 > 9;
     }
 
     public final void setPosition(Figure[][] board, final int x, final int y) {
