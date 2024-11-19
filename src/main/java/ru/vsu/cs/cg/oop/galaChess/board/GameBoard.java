@@ -81,5 +81,12 @@ public final class GameBoard {
     public Figure[][] getBoard() {
         return board;
     }
-
+    
+    public int getWidth() {
+        return BOARD_WIDTH;
+    }
+    public int getHeight() {
+        return BOARD_HEIGHT;
+    }
+    
 }
