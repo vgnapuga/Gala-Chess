@@ -13,7 +13,6 @@ import java.io.IOException;
 
 public class FrameMain extends JFrame {
     
-    private JPanel panelMain;
     private JPanel panelLeft;
     private JTable tableGame;
     private JPanel panelRight;
