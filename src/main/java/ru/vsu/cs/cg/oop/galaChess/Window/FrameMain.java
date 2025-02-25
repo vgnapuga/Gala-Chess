@@ -37,13 +37,11 @@ public class FrameMain extends JFrame {
         this.pack();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        
-        
     }
     
     private void createUIComponents() {
         try {
-            backgroundImage = ImageIO.read(new File("/home/onenull/.local/projects/IDEAProjects/OOP/OOP-task02/src/main/resources/GalaChessBoard.png"));
+            backgroundImage = ImageIO.read(new File("src/main/resources/GalaChessBoard.png"));
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Ошибка: Фон не найден");
@@ -52,30 +50,22 @@ public class FrameMain extends JFrame {
         tableGame = new JTable(10, 10) {
             @Override
             protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                
-                if (backgroundImage != null)
+                if (backgroundImage != null) {
                     g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+                }
+                super.paintComponent(g);
             }
         };
         
         tableGame.setRowHeight(80);
+        tableGame.setOpaque(false);
         
-        tableGame.setDefaultRenderer(Object.class, new TransparentCellRenderer());
-        tableGame.setOpaque(false); // Таблица прозрачная
-    }
-    
-    private static class TransparentCellRenderer extends DefaultTableCellRenderer {
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
-                                                       boolean hasFocus, int row, int column) {
-            
-            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-            if (c instanceof JComponent)
-                ((JComponent) c).setOpaque(false);
-            
-            return c;
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setOpaque(false);
+        for (int i = 0; i < tableGame.getColumnCount(); i++) {
+            tableGame.getColumnModel().getColumn(i).setCellRenderer(renderer);
         }
     }
+
     
 }
